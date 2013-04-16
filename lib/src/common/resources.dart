@@ -18,13 +18,13 @@ class UrlResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Url> get(String shortUrl, {String projection, Map optParams}) {
-    var completer = new Completer();
+  async.Future<Url> get(core.String shortUrl, {core.String projection, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "url";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (projection != null && !["ANALYTICS_CLICKS", "ANALYTICS_TOP_STRINGS", "FULL"].contains(projection)) {
       paramErrors.add("Allowed values for projection: ANALYTICS_CLICKS, ANALYTICS_TOP_STRINGS, FULL");
     }
@@ -59,13 +59,13 @@ class UrlResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Url> insert(Url request, {Map optParams}) {
-    var completer = new Completer();
+  async.Future<Url> insert(Url request, {core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "url";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (optParams != null) {
       optParams.forEach((key, value) {
         if (value != null && queryParams[key] == null) {
@@ -99,13 +99,13 @@ class UrlResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<UrlHistory> list({String projection, String start_token, Map optParams}) {
-    var completer = new Completer();
+  async.Future<UrlHistory> list({core.String projection, core.String start_token, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "url/history";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (projection != null && !["ANALYTICS_CLICKS", "FULL"].contains(projection)) {
       paramErrors.add("Allowed values for projection: ANALYTICS_CLICKS, FULL");
     }

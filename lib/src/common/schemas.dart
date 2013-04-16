@@ -3,25 +3,25 @@ part of urlshortener_v1_api_client;
 class AnalyticsSnapshot {
 
   /** Top browsers, e.g. "Chrome"; sorted by (descending) click counts. Only present if this data is available. */
-  List<StringCount> browsers;
+  core.List<StringCount> browsers;
 
   /** Top countries (expressed as country codes), e.g. "US" or "DE"; sorted by (descending) click counts. Only present if this data is available. */
-  List<StringCount> countries;
+  core.List<StringCount> countries;
 
   /** Number of clicks on all goo.gl short URLs pointing to this long URL. */
-  String longUrlClicks;
+  core.String longUrlClicks;
 
   /** Top platforms or OSes, e.g. "Windows"; sorted by (descending) click counts. Only present if this data is available. */
-  List<StringCount> platforms;
+  core.List<StringCount> platforms;
 
   /** Top referring hosts, e.g. "www.google.com"; sorted by (descending) click counts. Only present if this data is available. */
-  List<StringCount> referrers;
+  core.List<StringCount> referrers;
 
   /** Number of clicks on this short URL. */
-  String shortUrlClicks;
+  core.String shortUrlClicks;
 
   /** Create new AnalyticsSnapshot from JSON data */
-  AnalyticsSnapshot.fromJson(Map json) {
+  AnalyticsSnapshot.fromJson(core.Map json) {
     if (json.containsKey("browsers")) {
       browsers = [];
       json["browsers"].forEach((item) {
@@ -55,17 +55,17 @@ class AnalyticsSnapshot {
   }
 
   /** Create JSON Object for AnalyticsSnapshot */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (browsers != null) {
-      output["browsers"] = new List();
+      output["browsers"] = new core.List();
       browsers.forEach((item) {
         output["browsers"].add(item.toJson());
       });
     }
     if (countries != null) {
-      output["countries"] = new List();
+      output["countries"] = new core.List();
       countries.forEach((item) {
         output["countries"].add(item.toJson());
       });
@@ -74,13 +74,13 @@ class AnalyticsSnapshot {
       output["longUrlClicks"] = longUrlClicks;
     }
     if (platforms != null) {
-      output["platforms"] = new List();
+      output["platforms"] = new core.List();
       platforms.forEach((item) {
         output["platforms"].add(item.toJson());
       });
     }
     if (referrers != null) {
-      output["referrers"] = new List();
+      output["referrers"] = new core.List();
       referrers.forEach((item) {
         output["referrers"].add(item.toJson());
       });
@@ -93,7 +93,7 @@ class AnalyticsSnapshot {
   }
 
   /** Return String representation of AnalyticsSnapshot */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -115,7 +115,7 @@ class AnalyticsSummary {
   AnalyticsSnapshot week;
 
   /** Create new AnalyticsSummary from JSON data */
-  AnalyticsSummary.fromJson(Map json) {
+  AnalyticsSummary.fromJson(core.Map json) {
     if (json.containsKey("allTime")) {
       allTime = new AnalyticsSnapshot.fromJson(json["allTime"]);
     }
@@ -134,8 +134,8 @@ class AnalyticsSummary {
   }
 
   /** Create JSON Object for AnalyticsSummary */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (allTime != null) {
       output["allTime"] = allTime.toJson();
@@ -157,20 +157,20 @@ class AnalyticsSummary {
   }
 
   /** Return String representation of AnalyticsSummary */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class StringCount {
 
   /** Number of clicks for this top entry, e.g. for this particular country or browser. */
-  String count;
+  core.String count;
 
   /** Label assigned to this top entry, e.g. "US" or "Chrome". */
-  String id;
+  core.String id;
 
   /** Create new StringCount from JSON data */
-  StringCount.fromJson(Map json) {
+  StringCount.fromJson(core.Map json) {
     if (json.containsKey("count")) {
       count = json["count"];
     }
@@ -180,8 +180,8 @@ class StringCount {
   }
 
   /** Create JSON Object for StringCount */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (count != null) {
       output["count"] = count;
@@ -194,7 +194,7 @@ class StringCount {
   }
 
   /** Return String representation of StringCount */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -204,22 +204,22 @@ class Url {
   AnalyticsSummary analytics;
 
   /** Time the short URL was created; ISO 8601 representation using the yyyy-MM-dd'T'HH:mm:ss.SSSZZ format, e.g. "2010-10-14T19:01:24.944+00:00". */
-  String created;
+  core.String created;
 
   /** Short URL, e.g. "http://goo.gl/l6MS". */
-  String id;
+  core.String id;
 
   /** The fixed string "urlshortener#url". */
-  String kind;
+  core.String kind;
 
   /** Long URL, e.g. "http://www.google.com/". Might not be present if the status is "REMOVED". */
-  String longUrl;
+  core.String longUrl;
 
   /** Status of the target URL. Possible values: "OK", "MALWARE", "PHISHING", or "REMOVED". A URL might be marked "REMOVED" if it was flagged as spam, for example. */
-  String status;
+  core.String status;
 
   /** Create new Url from JSON data */
-  Url.fromJson(Map json) {
+  Url.fromJson(core.Map json) {
     if (json.containsKey("analytics")) {
       analytics = new AnalyticsSummary.fromJson(json["analytics"]);
     }
@@ -241,8 +241,8 @@ class Url {
   }
 
   /** Create JSON Object for Url */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (analytics != null) {
       output["analytics"] = analytics.toJson();
@@ -267,29 +267,29 @@ class Url {
   }
 
   /** Return String representation of Url */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class UrlHistory {
 
   /** A list of URL resources. */
-  List<Url> items;
+  core.List<Url> items;
 
   /** Number of items returned with each full "page" of results. Note that the last page could have fewer items than the "itemsPerPage" value. */
-  int itemsPerPage;
+  core.int itemsPerPage;
 
   /** The fixed string "urlshortener#urlHistory". */
-  String kind;
+  core.String kind;
 
   /** A token to provide to get the next page of results. */
-  String nextPageToken;
+  core.String nextPageToken;
 
   /** Total number of short URLs associated with this user (may be approximate). */
-  int totalItems;
+  core.int totalItems;
 
   /** Create new UrlHistory from JSON data */
-  UrlHistory.fromJson(Map json) {
+  UrlHistory.fromJson(core.Map json) {
     if (json.containsKey("items")) {
       items = [];
       json["items"].forEach((item) {
@@ -311,11 +311,11 @@ class UrlHistory {
   }
 
   /** Create JSON Object for UrlHistory */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (items != null) {
-      output["items"] = new List();
+      output["items"] = new core.List();
       items.forEach((item) {
         output["items"].add(item.toJson());
       });
@@ -337,7 +337,7 @@ class UrlHistory {
   }
 
   /** Return String representation of UrlHistory */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
