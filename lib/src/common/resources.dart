@@ -1,8 +1,8 @@
 part of urlshortener_v1_api_client;
 
-class UrlResource extends Resource {
+class UrlResource_ extends Resource {
 
-  UrlResource(Client client) : super(client) {
+  UrlResource_(Client client) : super(client) {
   }
 
   /**
@@ -40,7 +40,7 @@ class UrlResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -75,7 +75,7 @@ class UrlResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -120,7 +120,7 @@ class UrlResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 

@@ -4,8 +4,8 @@ part of urlshortener_v1_api_browser;
 /** Lets you create, inspect, and manage goo.gl short URLs */
 class Urlshortener extends BrowserClient {
 
-  UrlResource _url;
-  UrlResource get url => _url;
+  UrlResource_ _url;
+  UrlResource_ get url => _url;
 
   /** OAuth Scope2: Manage your goo.gl short URLs */
   static const core.String URLSHORTENER_SCOPE = "https://www.googleapis.com/auth/urlshortener";
@@ -62,6 +62,6 @@ class Urlshortener extends BrowserClient {
   Urlshortener([oauth.OAuth2 auth]) : super(auth) {
     basePath = "/urlshortener/v1/";
     rootUrl = "https://www.googleapis.com:443/";
-    _url = new UrlResource(this);
+    _url = new UrlResource_(this);
   }
 }
