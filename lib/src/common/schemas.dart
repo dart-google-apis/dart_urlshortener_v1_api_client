@@ -9,7 +9,7 @@ class AnalyticsSnapshot {
   core.List<StringCount> countries;
 
   /** Number of clicks on all goo.gl short URLs pointing to this long URL. */
-  core.String longUrlClicks;
+  core.int longUrlClicks;
 
   /** Top platforms or OSes, e.g. "Windows"; sorted by (descending) click counts. Only present if this data is available. */
   core.List<StringCount> platforms;
@@ -18,7 +18,7 @@ class AnalyticsSnapshot {
   core.List<StringCount> referrers;
 
   /** Number of clicks on this short URL. */
-  core.String shortUrlClicks;
+  core.int shortUrlClicks;
 
   /** Create new AnalyticsSnapshot from JSON data */
   AnalyticsSnapshot.fromJson(core.Map json) {
@@ -164,7 +164,7 @@ class AnalyticsSummary {
 class StringCount {
 
   /** Number of clicks for this top entry, e.g. for this particular country or browser. */
-  core.String count;
+  core.int count;
 
   /** Label assigned to this top entry, e.g. "US" or "Chrome". */
   core.String id;

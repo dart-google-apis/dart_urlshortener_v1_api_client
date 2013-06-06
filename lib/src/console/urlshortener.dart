@@ -61,7 +61,7 @@ class Urlshortener extends ConsoleClient {
 
   Urlshortener([oauth2.OAuth2Console auth]) : super(auth) {
     basePath = "/urlshortener/v1/";
-    rootUrl = "https://www.googleapis.com:443/";
+    rootUrl = "https://www.googleapis.com/";
     _url = new UrlResource_(this);
   }
 }
