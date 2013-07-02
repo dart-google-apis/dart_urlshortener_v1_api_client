@@ -35,7 +35,11 @@ class AnalyticsSnapshot {
       });
     }
     if (json.containsKey("longUrlClicks")) {
-      longUrlClicks = json["longUrlClicks"];
+      if(json["longUrlClicks"] is core.String){
+        longUrlClicks = core.int.parse(json["longUrlClicks"]);
+      }else{
+        longUrlClicks = json["longUrlClicks"];
+      }
     }
     if (json.containsKey("platforms")) {
       platforms = [];
@@ -50,7 +54,11 @@ class AnalyticsSnapshot {
       });
     }
     if (json.containsKey("shortUrlClicks")) {
-      shortUrlClicks = json["shortUrlClicks"];
+      if(json["shortUrlClicks"] is core.String){
+        shortUrlClicks = core.int.parse(json["shortUrlClicks"]);
+      }else{
+        shortUrlClicks = json["shortUrlClicks"];
+      }
     }
   }
 
@@ -172,7 +180,11 @@ class StringCount {
   /** Create new StringCount from JSON data */
   StringCount.fromJson(core.Map json) {
     if (json.containsKey("count")) {
-      count = json["count"];
+      if(json["count"] is core.String){
+        count = core.int.parse(json["count"]);
+      }else{
+        count = json["count"];
+      }
     }
     if (json.containsKey("id")) {
       id = json["id"];
