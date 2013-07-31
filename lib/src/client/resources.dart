@@ -1,9 +1,11 @@
-part of urlshortener_v1_api_client;
+part of urlshortener_v1_api;
 
-class UrlResource_ extends Resource {
+class UrlResource_ {
 
-  UrlResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  UrlResource_(Client client) :
+      _client = client;
 
   /**
    * Expands a short URL or gets creation time and analytics.

@@ -1,4 +1,4 @@
-part of urlshortener_v1_api_client;
+part of urlshortener_v1_api;
 
 class AnalyticsSnapshot {
 
@@ -23,42 +23,22 @@ class AnalyticsSnapshot {
   /** Create new AnalyticsSnapshot from JSON data */
   AnalyticsSnapshot.fromJson(core.Map json) {
     if (json.containsKey("browsers")) {
-      browsers = [];
-      json["browsers"].forEach((item) {
-        browsers.add(new StringCount.fromJson(item));
-      });
+      browsers = json["browsers"].map((browsersItem) => new StringCount.fromJson(browsersItem)).toList();
     }
     if (json.containsKey("countries")) {
-      countries = [];
-      json["countries"].forEach((item) {
-        countries.add(new StringCount.fromJson(item));
-      });
+      countries = json["countries"].map((countriesItem) => new StringCount.fromJson(countriesItem)).toList();
     }
     if (json.containsKey("longUrlClicks")) {
-      if(json["longUrlClicks"] is core.String){
-        longUrlClicks = core.int.parse(json["longUrlClicks"]);
-      }else{
-        longUrlClicks = json["longUrlClicks"];
-      }
+      longUrlClicks = (json["longUrlClicks"] is core.String) ? core.int.parse(json["longUrlClicks"]) : json["longUrlClicks"];
     }
     if (json.containsKey("platforms")) {
-      platforms = [];
-      json["platforms"].forEach((item) {
-        platforms.add(new StringCount.fromJson(item));
-      });
+      platforms = json["platforms"].map((platformsItem) => new StringCount.fromJson(platformsItem)).toList();
     }
     if (json.containsKey("referrers")) {
-      referrers = [];
-      json["referrers"].forEach((item) {
-        referrers.add(new StringCount.fromJson(item));
-      });
+      referrers = json["referrers"].map((referrersItem) => new StringCount.fromJson(referrersItem)).toList();
     }
     if (json.containsKey("shortUrlClicks")) {
-      if(json["shortUrlClicks"] is core.String){
-        shortUrlClicks = core.int.parse(json["shortUrlClicks"]);
-      }else{
-        shortUrlClicks = json["shortUrlClicks"];
-      }
+      shortUrlClicks = (json["shortUrlClicks"] is core.String) ? core.int.parse(json["shortUrlClicks"]) : json["shortUrlClicks"];
     }
   }
 
@@ -67,31 +47,19 @@ class AnalyticsSnapshot {
     var output = new core.Map();
 
     if (browsers != null) {
-      output["browsers"] = new core.List();
-      browsers.forEach((item) {
-        output["browsers"].add(item.toJson());
-      });
+      output["browsers"] = browsers.map((browsersItem) => browsersItem.toJson()).toList();
     }
     if (countries != null) {
-      output["countries"] = new core.List();
-      countries.forEach((item) {
-        output["countries"].add(item.toJson());
-      });
+      output["countries"] = countries.map((countriesItem) => countriesItem.toJson()).toList();
     }
     if (longUrlClicks != null) {
       output["longUrlClicks"] = longUrlClicks;
     }
     if (platforms != null) {
-      output["platforms"] = new core.List();
-      platforms.forEach((item) {
-        output["platforms"].add(item.toJson());
-      });
+      output["platforms"] = platforms.map((platformsItem) => platformsItem.toJson()).toList();
     }
     if (referrers != null) {
-      output["referrers"] = new core.List();
-      referrers.forEach((item) {
-        output["referrers"].add(item.toJson());
-      });
+      output["referrers"] = referrers.map((referrersItem) => referrersItem.toJson()).toList();
     }
     if (shortUrlClicks != null) {
       output["shortUrlClicks"] = shortUrlClicks;
@@ -180,11 +148,7 @@ class StringCount {
   /** Create new StringCount from JSON data */
   StringCount.fromJson(core.Map json) {
     if (json.containsKey("count")) {
-      if(json["count"] is core.String){
-        count = core.int.parse(json["count"]);
-      }else{
-        count = json["count"];
-      }
+      count = (json["count"] is core.String) ? core.int.parse(json["count"]) : json["count"];
     }
     if (json.containsKey("id")) {
       id = json["id"];
@@ -303,10 +267,7 @@ class UrlHistory {
   /** Create new UrlHistory from JSON data */
   UrlHistory.fromJson(core.Map json) {
     if (json.containsKey("items")) {
-      items = [];
-      json["items"].forEach((item) {
-        items.add(new Url.fromJson(item));
-      });
+      items = json["items"].map((itemsItem) => new Url.fromJson(itemsItem)).toList();
     }
     if (json.containsKey("itemsPerPage")) {
       itemsPerPage = json["itemsPerPage"];
@@ -327,10 +288,7 @@ class UrlHistory {
     var output = new core.Map();
 
     if (items != null) {
-      output["items"] = new core.List();
-      items.forEach((item) {
-        output["items"].add(item.toJson());
-      });
+      output["items"] = items.map((itemsItem) => itemsItem.toJson()).toList();
     }
     if (itemsPerPage != null) {
       output["itemsPerPage"] = itemsPerPage;
@@ -353,3 +311,16 @@ class UrlHistory {
 
 }
 
+core.Map _mapMap(core.Map source, [core.Object convert(core.Object source) = null]) {
+  assert(source != null);
+  var result = new dart_collection.LinkedHashMap();
+  source.forEach((core.String key, value) {
+    assert(key != null);
+    if(convert == null) {
+      result[key] = value;
+    } else {
+      result[key] = convert(value);
+    }
+  });
+  return result;
+}

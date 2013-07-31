@@ -1,14 +1,18 @@
-library urlshortener_v1_api_console;
+library urlshortener_v1_api.console;
 
-import "urlshortener_v1_api_client.dart";
-export "urlshortener_v1_api_client.dart";
-
-import "dart:core" as core;
-import "dart:io" as io;
-import "dart:async" as async;
-import "dart:json" as JSON;
-import "package:http/http.dart" as http;
 import "package:google_oauth2_client/google_oauth2_console.dart" as oauth2;
 
-part "src/console/console_client.dart";
-part "src/console/urlshortener.dart";
+import 'package:google_urlshortener_v1_api/src/cloud_api_console.dart';
+
+import "package:google_urlshortener_v1_api/urlshortener_v1_api_client.dart";
+
+/** Lets you create, inspect, and manage goo.gl short URLs */
+class Urlshortener extends Client with ConsoleClient {
+
+  /** OAuth Scope2: Manage your goo.gl short URLs */
+  static const String URLSHORTENER_SCOPE = "https://www.googleapis.com/auth/urlshortener";
+
+  final oauth2.OAuth2Console auth;
+
+  Urlshortener([oauth2.OAuth2Console this.auth]);
+}
