@@ -69,7 +69,7 @@ class AnalyticsSnapshot {
   }
 
   /** Return String representation of AnalyticsSnapshot */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -133,7 +133,7 @@ class AnalyticsSummary {
   }
 
   /** Return String representation of AnalyticsSummary */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -170,7 +170,7 @@ class StringCount {
   }
 
   /** Return String representation of StringCount */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -243,7 +243,7 @@ class Url {
   }
 
   /** Return String representation of Url */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -307,7 +307,7 @@ class UrlHistory {
   }
 
   /** Return String representation of UrlHistory */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
