@@ -14,7 +14,7 @@ Adding dependency to pubspec.yaml
 
 ```
   dependencies:
-    google_urlshortener_v1_api: '>=0.4.10'
+    google_urlshortener_v1_api: '>=0.4.11'
 ```
 
 For web applications:
@@ -29,13 +29,13 @@ For console application:
   import "package:google_urlshortener_v1_api/urlshortener_v1_api_console.dart" as urlshortenerclient;
 ```
 
-Working with out authentication the following constructor can be called:
+Working without authentication the following constructor can be called:
 
 ```
   var urlshortener = new urlshortenerclient.Urlshortener();
 ```
 
-Working with authentication then create a new `GoogleOAuth2` object and pass it to the constructor:
+To use authentication create a new `GoogleOAuth2` object and pass it to the constructor:
 
 
 ```
